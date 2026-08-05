@@ -1,77 +1,75 @@
 ---
 type: Processing Workflow
 title: Score timeline generation and spoiler-safe playback
-description: "How Score Shield converts authorized video into validated score cues and WebVTT, then resolves only the active state during playback."
+description: How Score Shield samples authorized video, validates candidate scoreboard observations, produces complete-state WebVTT cues, and resolves them at the playback position.
 resource: /server/pipeline.mjs
 tags: [workflow, score-timeline, webvtt, openai, spoiler-safety]
+openwiki:
+  roles: [workflow, domain, integration]
+  change_kinds: [lifecycle, data-model, cache]
+  source_paths: [server/config.mjs, server/pipeline.mjs, app/page.tsx]
+  symbols: [buildFrameSamplingPlan, samplingFrameTimestamp, sourceCacheKey, reconcileObservations, cuesToVtt, processVideo, cueAt]
+  test_paths: [tests/pipeline.test.mjs]
+  invariants: [Frame interval is a whole number from 5 through 30, Final 120 seconds are sampled every 5 seconds, Cues are ordered complete score states with non-overlapping intervals, Model observations do not directly become cues.]
+  validation_commands: [npm run test:unit, npm run lint]
 ---
 
 # Score timeline generation and spoiler-safe playback
 
-The score timeline is the product’s central contract. It represents complete score state over contiguous media intervals—not a list of future scoring events. [Architecture overview](../architecture/overview.md) carries jobs and artifacts around this workflow; [Testing and source map](../testing-and-source-map.md) identifies the regression tests that protect its deterministic portions.
+The score timeline is Score Shield's core product contract: contiguous intervals each carry the complete score known at that point, rather than a list of future events. [Architecture overview](../architecture/overview.md) owns the job/SSE transport around this workflow, and [Testing and source map](../testing-and-source-map.md) maps its deterministic regression suite.
 
-## From source URL to artifacts
-
-`processVideo({ id, sourceUrl, artifactsRoot, update })` in `server/pipeline.mjs` drives six UI-compatible stages:
-
-1. **Downloading** — invokes `yt-dlp` with `--no-playlist`, a fixed format expression, MP4 merge output, an artifact-local output template, and the already allowlisted source URL.
-2. **Extracting** — uses `ffprobe` to read duration, then FFmpeg to sample one JPEG per `FRAME_INTERVAL_SECONDS` (default 20) and cap width at 1280 pixels.
-3. **Analyzing** — reads each sampled JPEG sequentially and sends it as a base64 data URL to the configured OpenAI Responses model (`OPENAI_MODEL`, default `gpt-5.6`).
-4. **Reconciling** — turns candidate observations into confirmed score states with deterministic rules.
-5. **Exporting** — writes `score.vtt` and `manifest.json` concurrently.
-6. **Complete** — the API publishes the cue array over SSE; the UI moves to the player.
-
-The model prompt asks for the persistent live scoreboard only and rejects replay captions and statistics. Its response is parsed as JSON and validated by Zod: `found`, team names, nullable non-negative integer scores, and confidence in `[0, 1]`. Invalid JSON, missing required API key, unavailable executables, failed media commands, or no confirmed score state fail the job instead of fabricating a timeline.
-
-## Reconciliation is authoritative
-
-`reconcileObservations(observations, duration)` does not trust an individual model reading as a score event. It:
-
-- ignores observations without a found scoreboard, null scores, or confidence below `0.72`;
-- ignores duplicate accepted score states;
-- ignores a reading where one score regresses and the other does not increase; and
-- requires a newly proposed state after the first accepted cue to occur twice consecutively before accepting it.
-
-The first accepted state begins at time `0`. Later accepted states begin at the timestamp of the candidate that began their confirmation pair; the prior cue ends at that same timestamp, and the final cue ends at the probed media duration. Each accepted manifest cue retains `home`, `away`, `confidence`, and `evidenceFrame`.
-
-This is deliberately a hybrid design: AI supplies observations, while deterministic application logic protects monotonic score changes and cue boundaries. The current rules are a lightweight PoC, not a sport-specific adjudication engine: sampling can miss a short-lived state, team-name consistency is not separately checked, and there is no clock-aware replay detection. Do not replace deterministic guards with a prompt-only approach.
-
-## Output contract
-
-`manifest.json` is:
-
-```json
-{
-  "schemaVersion": "1.0",
-  "id": "<job id>",
-  "sourceUrl": "https://…",
-  "duration": 0,
-  "createdAt": "<ISO timestamp>",
-  "cues": ["…complete cue objects, including evidenceFrame…"]
-}
+```mermaid
+flowchart TD
+  Source["Authorized YouTube URL"] --> Cache["Resolve shared source cache"]
+  Cache --> Probe["Probe duration"]
+  Probe --> Plan["Build sampling plan"]
+  Plan --> Frames["Extract timestamped frames"]
+  Frames --> AI["Validate AI observations"]
+  AI --> Reconcile["Reconcile confirmed states"]
+  Reconcile --> Export["Write manifest and WebVTT"]
+  Export --> Player["Resolve cue at playhead"]
 ```
 
-`cuesToVtt(cues)` exports `WEBVTT` blocks with ordered interval lines and a JSON payload containing complete `home`, `away`, and `confidence` state. It intentionally does not export only a delta: a player that starts or seeks directly into a cue can render the current score without replaying prior events.
+This is the source-to-playback flow; only reconciled cues reach the browser player.
 
-The current React player consumes final cues from SSE rather than fetching this sidecar. The manifest and VTT endpoints remain useful artifacts and should retain ordered, non-overlapping, duration-bounded cues if the client contract evolves. Their storage and availability are constrained by the in-memory jobs described in [Architecture overview](../architecture/overview.md).
+## Sampling and source cache
 
-## Playback resolution
+`parseFrameInterval` accepts whole seconds from 5 through 30 and defaults to 10. A submitted job value overrides `FRAME_INTERVAL_SECONDS`; the processor records the chosen value in `manifest.json`. `buildFrameSamplingPlan(duration, interval)` uses that interval until the last 120 seconds, then samples every 5 seconds. A video at most 120 seconds long is sampled every 5 seconds throughout. `samplingFrameTimestamp` assigns each FFmpeg FPS-filtered frame to the midpoint of its sampling bucket, avoiding a false timestamp at the segment boundary.
 
-`cueAt(cues, time)` in `app/page.tsx` finds the last cue with `start <= time` using binary search. The player receives YouTube time updates and derives every displayed score from that one active cue. It does not render future events or a completed-match result list.
+`sourceCacheKey` canonicalizes known YouTube identities: equivalent watch and `youtu.be` URLs for the same video ID hash to one cache directory. `processVideo` checks `artifacts/cache/youtube/<key>/` for a non-empty `source.*`; on a miss, the module-level `sourceDownloads` map shares one download promise among concurrent jobs for the same key. Each job still extracts frames and regenerates observations and metadata independently. The cache is intentionally retained by [artifact cleanup](../operations-and-integrations.md#artifact-retention-and-cleanup).
 
-That creates the intended user behavior:
+The narrow test names in `tests/pipeline.test.mjs` are **accepts only frame intervals from 5 to 30 seconds**, **samples the final two minutes every 5 seconds**, **timestamps FPS-filtered frames at the center of their sampling buckets**, and **uses one cache entry for equivalent YouTube video URLs**. Run `npm run test:unit` after changing any sampling or cache rule.
 
-- start from the beginning → opening score;
-- resume midway → the score known at that moment;
-- seek backward → earlier score state; and
-- seek forward → destination state without revealing intermediate/future events in advance.
+## Observations and deterministic reconciliation
 
-The score-safe interface initially overlays the embedded provider player; once uncovered, YouTube-owned UI can still expose information outside Score Shield’s control. The active score is also written into `document.title`, which is timeline-safe but may be an information surface in shared-screen or tab-preview scenarios.
+`processVideo` runs `yt-dlp`, FFprobe, and FFmpeg with argument arrays, then calls the OpenAI Responses API sequentially for each JPEG. `ObservationSchema` requires `found`, nullable team names and non-negative integer scores, and confidence from 0 to 1. Invalid JSON/schema output, failed tools, missing source frames, absent key, or no reliable state fails the job; the code does not fabricate a timeline.
 
-## Safe changes
+`reconcileObservations(observations, duration)` first selects stable canonical team labels, normalizes an observation when the model swapped sides, then applies the authoritative acceptance rules:
 
-- Preserve stage names: `downloading`, `extracting`, `analyzing`, `reconciling`, `exporting`, `complete`, and `failed`; the UI directly maps them to progress labels.
-- When changing observation fields or prompts, update `ObservationSchema`, output parsing, fixtures/tests, and downstream cue construction together.
-- When changing reconciliation, add cases for duplicate readings, regressions, low confidence, missing scoreboards, cue boundaries, and malformed model output. Existing tests cover only a duplicate/regression sequence and basic VTT formatting.
-- Use `spawn(command, args)` with `shell: false`; never interpolate a submitted URL into a shell command. The source URL is validated at the API boundary in [Architecture overview](../architecture/overview.md).
-- Keep complete state in each cue and maintain strict temporal ordering/non-overlap so a client can resolve seeks independently.
+- observations need a found scoreboard, both scores, and confidence at least `0.72`;
+- the first accepted state begins at zero;
+- duplicates and any score regression are ignored;
+- a changed state is accepted only when a later observation repeats it;
+- a different later state that dominates a pending candidate accepts that candidate and becomes the next candidate; and
+- each accepted change ends the prior cue at its own candidate timestamp, while the final cue ends at media duration.
+
+This permits rapid consecutive changes without trusting a solitary reading. It also means no sport-specific adjudication is claimed: short states can be missed, and replay detection remains heuristic. Do not move monotonicity, team-side normalization, or cue boundaries into a prompt.
+
+The **keeps team labels stable and confirms fast consecutive score changes** and **confirms the test video's final score from consecutive closing-window frames** tests exercise the complex acceptance path. Add a case before changing confidence, candidate replacement, score-ordering, or team-label rules; `npm run lint` is the accompanying source check.
+
+## Output and playback contract
+
+`manifest.json` has `schemaVersion: "1.0"`, job `id`, original `sourceUrl`, `frameIntervalSeconds`, high-frequency window settings, `duration`, `createdAt`, and complete cue objects. A cue includes `start`, `end`, `{ name, score }` for each side, `confidence`, and `evidenceFrame`. `cuesToVtt` writes ordered `WEBVTT` blocks containing the interval and a JSON payload with complete score state.
+
+The React `cueAt(cues, time)` binary-searches cue starts and renders only that cue. This is why every cue must be ordered, non-overlapping, duration-bounded, and self-contained: direct resume or seek must not replay previous deltas. The UI gets final cues through SSE and exposes the VTT endpoint as a download; it does not parse the VTT or fetch the manifest today. [The architecture page](../architecture/overview.md#browser-interface-and-player) documents the matching player-completion status behavior.
+
+## Safe extension recipe
+
+For a sampling, observation, reconciliation, or serialization change:
+
+1. Start in `server/config.mjs` for cadence/absolute timestamps or `server/pipeline.mjs` for source identity, schema, reconciliation, and export.
+2. Preserve the external cue fields and the manifest's selected interval/high-frequency settings unless the UI or another consumer is migrated in the same change.
+3. Add the narrow behavioral test in `tests/pipeline.test.mjs`: initial state, duplicates, regression, transition confirmation, terminal window, team-side normalization, interval bounds, or VTT output as applicable.
+4. Run `npm run test:unit` and `npm run lint`. `npm test` is conditional only if the UI or hosted build contract changes.
+
+Do not hand-edit generated files under `artifacts/`; rerun processing instead. Escalate to API/UI changes when a new cue field, stage, or VTT download behavior must be visible to consumers.
