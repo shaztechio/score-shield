@@ -1,74 +1,77 @@
 ---
 type: System Architecture
 title: Score Shield runtime architecture
-description: "Architecture of the hosted Score Shield interface and the local Node media processor, including job APIs, artifact lifecycle, and deployment constraints."
+description: Architecture of the hosted Score Shield interface and loopback Node media processor, including startup, job transport, artifacts, and deployment boundaries.
 resource: /server/index.mjs
 tags: [architecture, processor, cloudflare, sse, artifacts]
+openwiki:
+  roles: [architecture, integration]
+  change_kinds: [runtime, public-api, lifecycle]
+  source_paths: [app/page.tsx, server/index.mjs, server/startup.mjs, worker/index.ts, vite.config.ts]
+  symbols: [ScoreShieldApp, PlayerScreen, YouTubePlayer, validateProcessorEnvironment, processVideo]
+  test_paths: [tests/server-startup.test.mjs, tests/rendered-html.test.mjs]
+  invariants: [The processor validates OPENAI_API_KEY before listening, Job records are process-local, Browser score state is derived from the active cue and player completion event.]
+  validation_commands: [npm run test:unit, npm test]
 ---
 
 # Score Shield runtime architecture
 
-Score Shield is intentionally split between a browser-facing interface and a local processing service. The split protects secrets and enables native media tools that the deployed Worker does not bundle. [Operations and integrations](../operations-and-integrations.md) configures both runtimes; [Score timeline workflow](../workflows/score-timeline.md) explains the processor’s core transformation.
+Score Shield separates a browser-facing UI from a local media processor. The split keeps an API key and native tools out of the hosted Worker and lets the processor own local source media and artifacts. [Operations and integrations](../operations-and-integrations.md) configures these runtimes; [Score timeline workflow](../workflows/score-timeline.md) defines the transformation the processor runs.
 
-```text
-Browser / React UI                         Local Node processor
-app/page.tsx                               server/index.mjs
-  POST /api/jobs ───────────────────────► create in-memory job
-  EventSource /events ◄───────────────── broadcast progress + final cues
-  play YouTube embed                       processVideo()
-         │                                  yt-dlp → ffprobe → ffmpeg → OpenAI → reconcile
-         └──────── active cue at time ───► artifacts/<job-id>/{manifest.json,score.vtt,...}
-
-Cloudflare Worker deployment
-worker/index.ts → Vinext app router + static assets
-(no processor, media tools, or local artifact store)
+```mermaid
+sequenceDiagram
+  participant Browser
+  participant UI as React UI
+  participant Processor as Local processor
+  participant Pipeline
+  participant Store as Local artifacts
+  Browser->>UI: submit YouTube URL and interval
+  UI->>Processor: POST api jobs
+  Processor->>Pipeline: processVideo
+  Pipeline->>Store: cache source and write artifacts
+  UI->>Processor: open job events stream
+  Processor-->>UI: progress and final cues
+  UI-->>Browser: active playhead score
 ```
 
-## Interface and player
+This shows the real-processing request flow. The hosted Worker serves the UI only; it does not invoke the local processor.
 
-`app/page.tsx` owns three client views: landing, processing, and player. A valid HTTPS YouTube URL is posted to `${NEXT_PUBLIC_PROCESSOR_URL}/api/jobs`; the default is `http://localhost:8787`. The page opens an `EventSource` after a successful submission and uses the final SSE payload’s cue array to enter the player. The browser does not currently load its own completed manifest or VTT endpoint.
+## Browser interface and player
 
-The player listens for YouTube iframe `infoDelivery` messages from `https://www.youtube.com`, maps `currentTime` to a cue with a binary search, and displays that cue only. A cover blocks the iframe until an explicit user action because provider-owned title/thumbnail UI cannot be completely controlled afterward. This playhead-driven display **consumes** the contiguous cue timeline produced by [Score timeline workflow](../workflows/score-timeline.md).
+`ScoreShieldApp` in `app/page.tsx` owns landing, processing, and player views. It posts `{ sourceUrl, frameIntervalSeconds }` to `${NEXT_PUBLIC_PROCESSOR_URL}/api/jobs` (default `http://localhost:8787`) and, after the `202` response, opens `EventSource` for that job. A `complete` SSE payload supplies the cue array; the browser also builds the processor `score.vtt` URL for the download link. There is no client-side manifest fetch, reconnection strategy, or polling fallback.
 
-The default hosted experience can run `demoCues` and simulated progress, whereas real processing requires a reachable processor. The UI’s product shell is deployed through `worker/index.ts`, which sends normal traffic to Vinext and handles `/_vinext/image` with Cloudflare image transforms.
+`YouTubePlayer` accepts messages only from `https://www.youtube.com` and its own iframe. `PlayerScreen` uses `cueAt` to binary-search the last cue whose start is no later than `currentTime`. It writes the active score and an `in progress`/`final` status to the document title. `onEnded` makes the status final; `updateTime` clears it when playback returns before the final cue. This consumption contract depends on [ordered, complete-state cues](../workflows/score-timeline.md#output-and-playback-contract), not event deltas.
 
-## Processor API and job state
+The interactive demo uses fixed `demoCues` and simulated progress, so it works without the processor or API key. The `worker/index.ts` Worker routes application traffic through Vinext and handles `/_vinext/image` using Cloudflare image transforms. It is a separate deployed surface: use `npm test`, not a processor unit test, after changing the hosted shell or build path.
 
-`server/index.mjs` is a dependency-light Node HTTP server listening on `127.0.0.1:${PROCESSOR_PORT:-8787}`. It creates the artifact root at startup and holds jobs in a process-local `Map`.
+## Processor lifecycle and HTTP contract
+
+`server/index.mjs` runs a dependency-light Node HTTP server on `127.0.0.1:${PROCESSOR_PORT:-8787}`. Before creating the artifact root or listening, it calls `validateProcessorEnvironment`; a missing or whitespace-only `OPENAI_API_KEY` emits structured error output and exits. `tests/server-startup.test.mjs` specifically proves this fail-before-listening behavior.
 
 | Endpoint | Behavior |
 | --- | --- |
 | `GET /health` | Returns `{ ok: true }`. |
-| `POST /api/jobs` | Accepts `{ sourceUrl }`, validates an HTTPS `youtube.com`, `www.youtube.com`, or `youtu.be` URL, creates a UUID job, returns `202`, then starts processing asynchronously. |
-| `GET /api/jobs/:id` | Returns the in-memory job snapshot, including any final cues. |
-| `GET /api/jobs/:id/events` | Opens an SSE stream and immediately sends the job state; subsequent pipeline updates are broadcast to connected clients. |
-| `GET /api/jobs/:id/manifest` | Reads completed `manifest.json` from the matching artifact directory. |
-| `GET /api/jobs/:id/score.vtt` | Reads completed `score.vtt` from the matching artifact directory. |
+| `POST /api/jobs` | Accepts a bounded JSON body containing an allowlisted HTTPS YouTube URL and optional whole-number `frameIntervalSeconds` from 5 through 30. Creates a UUID job, returns `202`, then begins processing asynchronously. |
+| `GET /api/jobs/:id` | Returns the process-local job snapshot with progress and any final cues. |
+| `GET /api/jobs/:id/events` | Opens SSE and immediately sends the current snapshot; future updates broadcast to connected clients. |
+| `GET /api/jobs/:id/manifest` | Returns completed `manifest.json` for a known job. |
+| `GET /api/jobs/:id/score.vtt` | Returns the completed VTT as a download for a known job. |
 
-Each job starts with `downloading` progress, transitions through the stage names consumed by the UI, and ends in `complete` or `failed`. Progress includes overall and stage percentages plus optional elapsed, ETA, and frame-count fields. The API validates only a bounded JSON request body (20,000 characters) and allows CORS from `WEB_ORIGIN` or `http://localhost:3000`.
+Jobs are retained in a `Map` and contain an SSE client `Set`; `randomUUID()` names both the registry record and its job artifact directory. CORS allows `WEB_ORIGIN` or `http://localhost:3000`. Request bodies stop at 20,000 characters. Preserve URL allowlisting, interval validation, loopback binding, bounded bodies, and argument-array subprocess use when changing this boundary.
 
-**Lifecycle limitation:** a processor restart loses the job registry, so existing artifact files can remain on disk while their API records return `404`. There is no persistence, cancellation API, retry policy, terminal cleanup, or SSE reconnection/polling fallback. The current API has no authentication, rate limits, concurrency limits, or artifact ownership model; the loopback binding is therefore a material security boundary, not a deployable public-service design.
+A restart loses every job record even if its artifact files remain. There is no cancellation endpoint, authentication, rate/concurrency control, ownership model, durable queue, retry, cleanup scheduler, or reconnect fallback. These are security and operational limits, not hidden extension points; see the [quickstart backlog](../quickstart.md#backlog).
 
-## Artifact lifecycle
+## Artifact and deployment boundaries
 
-`processVideo` creates `artifacts/<uuid>/frames/` and writes:
+`processVideo` writes per-run output under `artifacts/<uuid>/`: sampled `frames/`, `observations.json`, `manifest.json`, and `score.vtt`. Source media is intentionally **not** copied into each job: the pipeline caches it at `artifacts/cache/youtube/<cache-key>/source.*` and can share an in-progress download for equivalent video identities. [The workflow page](../workflows/score-timeline.md#sampling-and-source-cache) explains that identity and concurrency behavior.
 
-- `source.*` — local media downloaded through `yt-dlp`;
-- `frames/frame-*.jpg` — sampled analysis input;
-- `observations.json` — raw schema-validated model observations;
-- `manifest.json` — versioned job metadata, source URL, duration, and reconciled cues; and
-- `score.vtt` — cue intervals with JSON score payloads.
+`npm run artifacts:clean` calls `cleanJobArtifacts`, which deletes only UUID-shaped directories directly under the selected artifacts root. It preserves `cache/` and unrelated directories; `tests/clean-artifacts.test.mjs` is the narrow regression test. Do not replace that command with a broad recursive cleanup.
 
-The job identifiers come from `randomUUID()`, and artifact access uses only those generated IDs from the in-memory map. The generated media and frames may be large or rights-sensitive; they are Git-ignored but have no automatic retention policy. Any change to durability or storage should start with [Operations and integrations](../operations-and-integrations.md) and preserve the cue contract described in [Score timeline workflow](../workflows/score-timeline.md).
+Vite loads Vinext, the Cloudflare plugin, and `build/sites-vite-plugin.ts`, which copies `.openai/hosting.json` and `drizzle/` to `dist/.openai`. D1 and R2 bindings are currently `null`. `db/index.ts` can acquire a D1 binding, but `db/schema.ts` exports no product tables; `examples/d1/` is not part of Score Shield runtime.
 
-## Hosted build boundary and inactive persistence scaffolding
+## Change navigation
 
-Vite loads Vinext, a Cloudflare plugin, and `build/sites-vite-plugin.ts`. The custom plugin copies `.openai/hosting.json` and `drizzle/` into `dist/.openai` after the build. Current `hosting.json` sets D1 and R2 to `null`, so the Worker configuration has no database or bucket bindings.
-
-`db/index.ts` has a `getDb()` helper for a Cloudflare D1 binding and `drizzle.config.ts` points to SQLite migrations, but `db/schema.ts` intentionally exports no tables. The `examples/d1/` route and schema are opt-in examples, not product runtime paths. Do not present D1 as current job storage unless a binding and schema are added.
-
-## Change guide
-
-- **Player or API contract change:** update the shared stage/cue shapes in `app/page.tsx` and `server/index.mjs` together; preserve the `complete`/`failed` stages and the current SSE payload shape unless the client is migrated in the same change.
-- **Processor exposure change:** add focused tests before weakening URL validation, body limits, CORS, loopback binding, artifact construction, or subprocess argument handling. `AGENTS.md` requires argument arrays and `shell: false` for subprocesses.
-- **Hosting change:** test the built Worker (`npm test`), not just the local processor. The hosted app and processor have different runtime capabilities.
+- **API or SSE shape:** update `server/index.mjs` and the consumer in `app/page.tsx` together. Preserve progress stage identifiers (`downloading`, `extracting`, `analyzing`, `reconciling`, `exporting`, `complete`, `failed`), then run `npm run test:unit`; add a transport test before changing error/reconnect behavior.
+- **Player state:** start with `PlayerScreen`, `YouTubePlayer`, and `cueAt`. Preserve playhead-derived score and the final-status reset rule. Run `npm test` because `tests/rendered-html.test.mjs` validates the built Worker surface; browser interaction tests do not currently exist.
+- **Processor exposure:** the narrow existing check is `npm run test:unit` for startup. Add focused API/security coverage before changing CORS, host binding, URL parsing, body limits, artifact routing, or subprocess handling. Public deployment is out of scope until the backlog capabilities exist.
+- **Worker/build packaging:** change `worker/index.ts`, `vite.config.ts`, or `build/sites-vite-plugin.ts` with `npm test`; the build and rendered HTML test, rather than processor tests, exercise the shipped UI boundary.
