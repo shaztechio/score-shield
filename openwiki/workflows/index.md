@@ -1,3 +1,3 @@
 # Files
 
-- [Score timeline generation and spoiler-safe playback](score-timeline.md) - How Score Shield samples authorized video, validates candidate scoreboard observations, produces complete-state WebVTT cues, and resolves them at the playback position.
+- [Video job processing workflow](process-a-video-job.md) - Traces an authorized YouTube URL from browser submission through the local processor, sampling and AI reconciliation, artifact export, SSE completion or failure, and spoiler-safe playback.

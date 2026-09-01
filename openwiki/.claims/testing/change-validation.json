@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:133161ee9328e3206ac516f4dce031171a9ae7021c8d2177ff86b579a0d9c6ba",
+  "claims": [
+    {
+      "id": "claim_e45b2cf11b9e4ecc86922e9f6833ddd8",
+      "statement": "`npm test` runs the four focused Node test files through `npm run test:unit`, then builds with Vinext and runs the rendered-HTML test; `npm run lint` is a separate ESLint command.",
+      "evidence": [
+        {
+          "resource": "repo://package.json#L9-L20",
+          "version": "repo-lines-v1:sha256:67b3e4d602c8e1533a7210eb975d707f6e5a22049d02bcea2fadc17b8805714f:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM0ODMzZDU5NDljMDNhNDBjYTk1MjQ5MTYxMGE2NjU5NjQ0YjNhYTQ2NjM2MmY3OTkwMjBkYmYxOTgxNTQ3ZGIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYyNTAxMGFmM2Q5MzYxYjk5YmQyNjE3OWNmZDI0MDNiZmFiZDEzYzc0NmU0YTg2ZGVhYjUwMGYzYjVjZWYwMjEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjcyNzAxMTI4NzM1MDNhMDc0OGU1ZWY0MGViOWZlZTUyYTZjNmRiNTdhNzMzMTI1ZjQ5NDhkMThmNGNjMTdiNjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQxNDM4MDliMWQzYjRlOTcyMTM5YWUxZjYwYWU1Y2FhNDQ3Mzc2ZjAwNDQ3OWRjMWRiNTAxMjdlNTYxM2Q2ZDEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_c0c944dca6e749e7adad0278b83b162f",
+      "statement": "The rendered-HTML test imports the generated `dist/server/index.js` Worker and invokes its `fetch` handler for both `/` and `/preview`, asserting server-rendered product content.",
+      "evidence": [
+        {
+          "resource": "repo://tests/rendered-html.test.mjs#L20-L29",
+          "version": "repo-lines-v1:sha256:1ef8e7cd96ae779a94ed9d776ce32b60324af01d1ea8ad433714f2a8102953b7:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU3ODMzZDFhYjg1ZWM3ZmQ4OWQ5MGRmY2QzNGYxOTRmZjNlNTcxOTdjY2M0M2M2ZGMxOGZhYTFmMThmYjhhZTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc4MDllMWM0YmNkZThmNzVkZDVlZTYxYjI2ODFkODc0MmEwNzc4MWUwODRkYzlkODNhMjAxNDVkMWJhMGI4ZTkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjY0YmEzNjE4MDk5NWUwZGE3MmNjNjRlNDMzOTFmMjhjOTZjZjcwYmVjZGM1MWEzYjYwNzNmZDU5MjI2N2QzYjYifQ"
+        },
+        {
+          "resource": "repo://tests/rendered-html.test.mjs#L31-L65",
+          "version": "repo-lines-v1:sha256:dbfa032c1e0f052bbc16e83ec18a90ca2ef49631a7239150399116b1d607ce2c:eyJzZWxlY3RlZExpbmVDb3VudCI6MzUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIyMWRhNTNiYTE3NTc0OGM1NDAxNzgzYjEyN2I5NjM2NmM0ZDA2ZWVjOTE1NGYyZWY5N2U1MWYwZTYyZGU2MjgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE4NzAxZGQwOWFkMDc3ZmExNGY5YzdhMjA5MGU2MzcyMmYwOGExODBhMThhZjljYjNjZDVjZjZiNzFhNGQxMWQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA5NGZjMGMxNzNkMWVjM2ZjNTAxZDdkZmE5Mjg1NTAxYzUyN2NmYjQ3MTI1ODNkYTNjYzM2MTgwNTY2YjRiZTMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImY2ZjViNDBiMTU4NDU3ZDE3ODY0ZjIxNzkwNzg2ZGQ1YTJlY2RiNjRiNjZhNjUxZjc4OGQ0ZTI1Y2QzMzAzZDIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_99986caa300f45b0b74c0dca9267574d",
+      "statement": "The pipeline builds a sampling plan, extracts timestamped frames, obtains scoreboard observations through the OpenAI Responses API, reconciles observations into cues, and writes `score.vtt` plus `manifest.json`.",
+      "evidence": [
+        {
+          "resource": "repo://server/config.mjs#L32-L50",
+          "version": "repo-lines-v1:sha256:0d74c286e906b4388c3c8abec324b891e40779059254660bfd9411d745825408:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ0NTM0NWI0ZDM4MDM5M2ZkMjE1YzM1NTM0MTA5MDJmZGM3YTQyNzE4N2I2YmM2MGYyNjA3ZThlZTdmYTM2YjAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjllOTVjMjIyN2JkYTYyZjE1YTA4M2NlOTRlYzBhZjNhMjY0YjljYzdhNTUxMzRkNDQxZmNjNmNlZGJmMTM1OTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://server/pipeline.mjs#L312-L388",
+          "version": "repo-lines-v1:sha256:afe3d377d60fe6598c51e676b0507a1d0940ac9a0768b2fe0642c8a994cd3cc6:eyJzZWxlY3RlZExpbmVDb3VudCI6NzcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUzYzA3MzFhMzc3YjRhNzI2ODc5ZmFlMzc4ZDhkMmYxNjcyZTdkMjk3MjYwMzJlMzJiOGQ2ZmVlMTk0MmQyNzgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNlOGNlYTc2ODdhNjYyNmU4ZGJkOGY4ZjllMjBiZjEwYzAzODRiYzIzY2NiYzk3OWRiNDdjNjdhZWQ0YTU2YTMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImM4NGVlM2Y2MDBjZDI1Y2RiYWE1ZGM1ODk4ZTcxODkyMmMzM2Y5ZTQ3MDM4ZTkyYmYyYmE0YjI1M2NkNWIxNDUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_75eefc4e80ac4db38be0f9010afcd013",
+      "statement": "Timeline reconciliation ignores observations without a found, sufficiently confident, complete score, rejects repeated or regressing accepted scores, confirms a normal changed-score candidate by repetition, and closes the final accepted cue at the media duration.",
+      "evidence": [
+        {
+          "resource": "repo://server/pipeline.mjs#L161-L223",
+          "version": "repo-lines-v1:sha256:11a10d5393631b35b97b1c7b37745e436d7dc23bbc51c386c31f1fc27fdf2ad3:eyJzZWxlY3RlZExpbmVDb3VudCI6NjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA5NmQ5MjhjYzdkMTZmZGZhZjliYmQ5ZTNiYjg1NmMzODk0ZjY2NTgzNmNlNDYyZGQwOGY4MGRiZjVjOGNlZjYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjkyMDQwZTA5NWE5NGUyYWRhNzRlNDIxZjM3MTg3NTFhOTFhODEwYmZkNjZmNDhmNGU5MzljN2I3NDgwZWI2NzAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjU2OGNmMDg5YzdhN2ZhMDg4ZjNiZDlkOGM3YWVjOTg5NDliYzg2ZjlhNzI0Y2ViMjgyNjVhN2IwY2Y1ZWYyMjgifQ"
+        },
+        {
+          "resource": "repo://tests/pipeline.test.mjs#L71-L135",
+          "version": "repo-lines-v1:sha256:456ddcd74bb4d6c4ec353fb1accdb189567a2596fd172f1fac0cd8d108073167:eyJzZWxlY3RlZExpbmVDb3VudCI6NjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE0MGNlZmVlMDgyNzI4MzY2MzBkOTZhOTFlY2NmOTZjNmQzZmU2MDk4NmIzNjU5MTQyZDc0NTBiZGZiZjMyMjIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY2ZjViNDBiMTU4NDU3ZDE3ODY0ZjIxNzkwNzg2ZGQ1YTJlY2RiNjRiNjZhNjUxZjc4OGQ0ZTI1Y2QzMzAzZDIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg1NzEyODMyNjA0NDkxODM5YTdkMmJjOGI0OGZlODM3NWQxYjU2ZjBiNDQyNzYxNTA0YjQ0ODIxODQ4ZWZlZWQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjMzZGUyZmYyN2RmYmEzOTUwYTRmOWJjYjIyZDZmNTdlZDVhMjg5Y2RkNzUzMjVjYzZjMWEyMTJlZjYzZjE4YTkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_45508903e98a444fb9a7b8ecbf848178",
+      "statement": "The processor validates an HTTPS YouTube source URL and a 5–30 second integral frame interval before creating an in-memory job, starts processing asynchronously, and broadcasts progress and cues to SSE clients; completion changes the job stage to `complete`, while processing errors change it to `failed`.",
+      "evidence": [
+        {
+          "resource": "repo://server/config.mjs#L17-L30",
+          "version": "repo-lines-v1:sha256:91f6d1c31bfb19b9cde36d85bbe2d3bcbf01182a7d23e345fc653e1edeece501:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYwYTBjODgwM2E0YzAzNjI2MjZlMzUxODIzNDRiYjlkMDUyM2M1M2FlMjBkMjlkMmE2YWRkZmNkY2FkYmE5ZjgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY5NmEwOTMxNWM1YTA1NTRkMDI1OGYxNTc5YzlhNzAyYWU2ZTVlZjQ1MWU1MTRkYmNjYjFkZGUxZDRlMTcxOTIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjU4NjU3ODhkMmYyYTU5ZjdhOTVmM2NhMjUyYTFhNmRkZmI1MGNiMzhjMWUzYWI1YjA5MzVmYTZkYWY0MjBiZWQifQ"
+        },
+        {
+          "resource": "repo://server/index.mjs#L119-L141",
+          "version": "repo-lines-v1:sha256:e91dbe1a2397bd3fd91938ef99f208fea83c7f972feec7c2f9c8872e523aca0b:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg0NjdmMmVkMjZkYTEwZDFmZWY0OTI2ZGIzNmQ2ZTNkNjc4Y2NhYTBjZmUzMDcyYzVlOTBjNTA3N2ZhZWNhNjMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYzODFmYjRlYTk0NjcyNDhkNGRlNjlhYTNiMTBiN2Q3NGZlZjJkYWY5NTAzOWEzNjQ5MDk2Y2M5YmQyZTEzOWYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZhNDFkNzNjNDUyMmJlYTM5ZmY4MTVlMjRiY2YxMzExODUzMWQ2NzFlYjNjZjUzMTIxODg1ZTExYTFjNDcyNGQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjE2Zjk5ZjE1ODNjOWQ3NDVmOTJlZDAxOGRhNjQ1NmFhYTI3YzBkOTkyODVkNzkwNGYxODU3Y2Q3MDNlY2ZkZTUifQ"
+        },
+        {
+          "resource": "repo://server/index.mjs#L73-L115",
+          "version": "repo-lines-v1:sha256:e155b747d1090d05b97f6183a12db1eefc5d454fd9aa66c95f817e04f5532dc9:eyJzZWxlY3RlZExpbmVDb3VudCI6NDMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE3NDAwOGRmZGI2ZmU5MjBmN2E3ZGVjMWMzNTVkMWMwN2EwZWZmMzA4NjZmZDk3YmQ1MjJiYmExNmJkNDE2NGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU5YzEzNTkwNjY1NjMyM2QxYzVlYTQxNjU0ZWU2NmFmYjU4NWFjZGNmYWVhY2ExMjFkNWUzMGJmMTkzZWVkZDciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImFmZTI2MTNiNjJkOTljZmJiMDZjN2Q5NDE3NjA1ZmRiNmM4OWM4ZTkyODFiYTNkY2Q5NDRjNWU3ZDUzOTNlOTciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjZhNDFkNzNjNDUyMmJlYTM5ZmY4MTVlMjRiY2YxMzExODUzMWQ2NzFlYjNjZjUzMTIxODg1ZTExYTFjNDcyNGQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_f48406dc25874542be25843f5d241ec1",
+      "statement": "The client posts jobs to the processor, consumes its EventSource updates, enters the player only on a `complete` progress event with returned cues, and selects the latest cue beginning at or before the YouTube playhead time.",
+      "evidence": [
+        {
+          "resource": "repo://app/page.tsx#L258-L283",
+          "version": "repo-lines-v1:sha256:0af4316d716031d97cf69c95229a57d3381f1fe7e35351197beff093205d53c2:eyJzZWxlY3RlZExpbmVDb3VudCI6MjYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgyMjkwZmZkN2RkYTE0OTU3OGRlNTExZGUzZWIzMDFiMWRkNzg4NTg0OTJlZDcxNTA0YWE1ZjBkYzM1NTBkM2MiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI5Zjc3Yjc2YTJjYjU0MWQ3YWNkMmEyMGY2MWY0Y2U2Yzc1N2VjOWE1NjU2MTM2OTE2MDlhMGE2Mzg3YmRkZWEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ0ODRhNGQ4OTdlYWUxNmFmY2JjOWRkMzBkMjNjNTNhNjA3N2ZmMzQ3ODI3ZDJiYjgyOGNiYTdlMWEwMTkxNjgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ0ZDYwNjRkNGI3NDhjNjE1OGVjMjJiYTE3MWFmNjRmYTdmNDZmMThjYTY1NDZhY2QwMWI1YzI1MDY2OGE0NjUifQ"
+        },
+        {
+          "resource": "repo://app/page.tsx#L307-L351",
+          "version": "repo-lines-v1:sha256:6bf4291d9c6588920f5b68b7ac9510370862b57f64fdaa273b8d2f6c8d23f288:eyJzZWxlY3RlZExpbmVDb3VudCI6NDUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZlMjNlNjEwYWY4YjkwMGI1NWViOTZkMDdiYjVlOGJjNTA0YWM1OGZlMTI0ZDVlNWExN2VmOTQzNGJjMzNlNTIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI3ZTU3ODhkNWQ5ZDczZDI0YTgxZGJjMGE1YTc0YmZhODJjOWMzYjNhZjk5ZTUyYWY3OTZlOTBiNDY4YThhM2QiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZkYTFiZmI4MmVjZGQ0ODNjODQzN2JkNTNjMjBlZGQzZjY3Y2M5MGYyNjUxYjY1ZjE3MDc1ODU1ZGM3ZmM3OGMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImY0YTUwN2Q0MDNkZjI3ZWRkZmEyOGU5MWI4ODAwOGZlYWIwZTE1ODMxMTQ5MjczODM3OGVmMTA0MmFiZWQyNWUifQ"
+        },
+        {
+          "resource": "repo://app/page.tsx#L81-L95",
+          "version": "repo-lines-v1:sha256:ee636b023ac41713213afb1baafb84b158de8038d54ac84fd88601be99ee7c04:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNlNjM5MTYyNWExYzE4ZTRkMGMyY2ZhNTEzMTEzMWE2ZTEyNmI1ZDgxZjcyYWU0N2VkNDM3NDg5MDYwYTNiNTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijk3NzQ1ZGE4ZmE5OWNmN2NmYjRmMzBjODI4MWM3MWYyZGQ4Yzc1Y2E4ODhjMmZjN2YyNGI3ZWIxYWJmNmY5ZjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImFlZDk5ZjUzNTk3YjFmOTgzMzVhNWE2MjhlNTc2MjUzZDRhMDQxZjdmNzJjZGY0Zjg4ZjdjM2RlYmQ1NmMyNDIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_655f23dd67244b459a567618171f689e",
+      "statement": "The current focused pipeline suite tests interval limits, final-window sampling, sampling timestamps, cache-key equivalence, a valid no-scoreboard observation, reconciliation fixtures, and VTT output, but it does not exercise a live OpenAI response or real media tools/downloads.",
+      "evidence": [
+        {
+          "resource": "repo://server/pipeline.mjs#L233-L247",
+          "version": "repo-lines-v1:sha256:7dc211c5d96bb37bf5b77806c52488cf35ce29d423107e00cf79093864ceebfb:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYxYjY1ZjkzODAxYTIxZmY3ZjA1NTE3OWUyNTJjODE5OTk3ZmQ2MDU0NWZiOWE4YmE5OTBkMjgxMmQ1YWViZjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjlhYWQxZGUzNzhmMzBjYzI5NDdmNDNmN2I4ZmY5NmQwMTY2MmQ0NmM3MzlhOGEyMTYwNDgzMGFjZmI5YjdkM2MiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUwYjY0ZTVmOGI4YzRjMWQxMzIyZGEyNzAzNWNiMmFkZGU1YzJhY2Q1Y2M3ZmY3YjY4YzczMmU1ZjVlOTVlMWEifQ"
+        },
+        {
+          "resource": "repo://server/pipeline.mjs#L84-L114",
+          "version": "repo-lines-v1:sha256:e911eabbda57cff648481996a7faf9a48ee864983d22ba293dff40ed6a68dddb:eyJzZWxlY3RlZExpbmVDb3VudCI6MzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUxMGY0MmVjNDAxOTc2YjExYjM5MTEyMTgwYzVlMjQyMWY5YzI4NTgyMzA1Y2FjNDQ1MzM5NjRkODFmZTFmMDEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNhM2U0NmY5NDI3NmI2ZjZmNGVkMWYwMmFmNzhiZWY2YTJlZTFjNDM5ZGQ1NTg0Yjk3Mzk0ODMxMzIxNGQyYjciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU5ZjFiZmNiZGUyMzdhMTIxNDEyMDUyNDRhOWNhNDAzM2I4OGVkYzAwNTlmNmQ1YzAzM2U0MTcxMmRhYTEyMWIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjJiYTZjOTExYWQ5MjZlYTg4NDBmNWU2MDQxNTQ5YjJmNzUwMjYxNTg3YmU3MDcxMzkwY2ZkZTJmODVlNmE3NTkifQ"
+        },
+        {
+          "resource": "repo://tests/pipeline.test.mjs#L19-L142",
+          "version": "repo-lines-v1:sha256:94f50bc3e0f09227362f581366137c0dd6fce2b5fb6007626fb2cbcffc76c86e:eyJzZWxlY3RlZExpbmVDb3VudCI6MTI0LCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiI3MDQyYzNiYzJlYTE5N2I0ZGE2ZmU3M2VmZmNhMGUwYjAwNjVhNTZlZTcxOGVhYWY5MjNhZGEzMTQzZDhlNGU5IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiJmNmY1YjQwYjE1ODQ1N2QxNzg2NGYyMTc5MDc4NmRkNWEyZWNkYjY0YjY2YTY1MWY3ODhkNGUyNWNkMzMwM2QyIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiIzMTkyNWNiNjU4ODljMDMwZmNmYjJiZmYxYjk2MzdkOGIwN2IxZDBhZTIyMjBlM2NmYzE1YjlkMzA1ZmMwOTYyIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
+        }
+      ]
+    },
+    {
+      "id": "claim_21b333cb29604c95926a3064bd9c9a3a",
+      "statement": "The setup tests cover platform-specific install-plan selection, while the setup script also owns Node-version validation, dependency/tool checks, package-manager execution, and `.env` creation; changes outside install planning therefore need additional focused process-level coverage.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/setup.mjs#L102-L151",
+          "version": "repo-lines-v1:sha256:5fbe77c9400ceb9e19ef1084bdbfd6779f20fd2a309db8a6babc22de8abc60ed:eyJzZWxlY3RlZExpbmVDb3VudCI6NTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU4NzA5MWI0NDBjMjI5ZGFlZWVkNWYzNjk1MzY3N2I1YjMyNjA5N2VkMDNhMDliZmI5N2Q3NGY3ZDcxM2Y4NzIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFmMjE5OTQ1ZjUwNGRlYzdlOWI2MWMxZjlhMDA2MDllMzI0ZTE5NzkzYjhiNTk0OTVmZGQxMTY3NGVkY2QwODgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ5NzllNThhNDU5ZWRkYmY4MjNkMzc3YmM3NGQwMjVhNTIyMDMwNTA3NjhhMjMzNzY4NjQ5Y2U4M2UxMDhmYzciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjUwMmE0ZjJiYjIwNGU1OTM1OTJhMTE2MDYwNTJjZWYyY2FmMmFmNWU1ZDBiYzViNzk5NmEzODUzMDFkMjk0MDEifQ"
+        },
+        {
+          "resource": "repo://tests/setup.test.mjs#L17-L38",
+          "version": "repo-lines-v1:sha256:7d71889cf823239932c9e819c94199bc6b7f79cf463e88297eaf4da6518a16a1:eyJzZWxlY3RlZExpbmVDb3VudCI6MjIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM2YzdjY2UwYTcwYjM0ZWZhM2FlMzgwZWExMjA2ZTRmZjAwMzNmZjJmNzZlN2M2ZGZlNGNlM2Y3ZGNkMDg2MjMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY2ZjViNDBiMTU4NDU3ZDE3ODY0ZjIxNzkwNzg2ZGQ1YTJlY2RiNjRiNjZhNjUxZjc4OGQ0ZTI1Y2QzMzAzZDIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY5NmEwOTMxNWM1YTA1NTRkMDI1OGYxNTc5YzlhNzAyYWU2ZTVlZjQ1MWU1MTRkYmNjYjFkZGUxZDRlMTcxOTIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_b6c5206d812e440cad0faa1e9105db80",
+      "statement": "Artifact cleanup removes only immediate UUID-shaped job directories, preserves cache and unrelated directories, and treats a missing artifacts root as empty.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/clean-artifacts.mjs#L21-L42",
+          "version": "repo-lines-v1:sha256:4893b07b2164c07ab868ce2f1075ab864e6d5083faf9f48f03b13502124ee21e:eyJzZWxlY3RlZExpbmVDb3VudCI6MjIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYwOWI3NzFlNTg0ODQzNDI4NTkxYzJlM2FhZDE3NzAyYWZhODkzZTVmODI5MTk1Nzc0ZjZmZjhmZTAxMWFiYjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJmNTFkMjc1MmVmOGJkZDdkYzM2NmFjYmU3NGFmMjNmZTE3NzNjMmQxMWM5ZWNlZjVlMTIxOThmYzdiZWEyNDkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjcyN2IzN2E2MGIzMGE2YjQ5MWM3YTJmMmRlODA2NWEzOTE5MmQyNjQ4NDFjMjE0MmMyMzhiOTNjYTljNjQ1NzMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImY1NWQ2Y2RhMTNhNTQ5YmY3MzM0NTMzMzViZjAzN2E2MDk2ZGE5ODdlMjgxZjI0NzNmMGQ2ZmQxZTBiMjA5NTQifQ"
+        },
+        {
+          "resource": "repo://tests/clean-artifacts.test.mjs#L24-L48",
+          "version": "repo-lines-v1:sha256:98ad522898c524587029d6240c362c8f90a2b086cf62cd625015c91731ee1429:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJhYzQ4NzdlNzNkNDEzZjRhYmQ3NTMxOTZhNTU2ZDE2NDBlYWQ0MmY2MWE4OTA4YjBlMjM3ZWQ1ZWM0ODgwNzIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY2ZjViNDBiMTU4NDU3ZDE3ODY0ZjIxNzkwNzg2ZGQ1YTJlY2RiNjRiNjZhNjUxZjc4OGQ0ZTI1Y2QzMzAzZDIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjUzNmRlZWY3OTlkOThkYTE2NzI0OTMzY2I2NDU3MTBkZThjYjA0NmMxMzE0MzQxZGFlZDdhNmJkZGNiNjM0MzUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_cf52bf933d9a4cb0a53b25d8e9ec533a",
+      "statement": "Processor startup rejects a missing or blank `OPENAI_API_KEY` before listening, and the startup tests verify both validation and the entry process's actionable failure output.",
+      "evidence": [
+        {
+          "resource": "repo://server/index.mjs#L25-L41",
+          "version": "repo-lines-v1:sha256:8a94ac7c3e2dbfe912f88e519118d04f8aa4fd50de0f333cc22c770400aff274:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNhNTNiYTM1MDk2Njc2YzUyNDBjYzA4NDQ4M2ZlMDM1NjE3Zjk0ZjA5MGMyYTA5YTI4NjdjMDQwYWEzNjE5ZTgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJhNTZkMzQ2YzVlYTdlNjljOWUwNjZmZDdkMTI2YzVjYmM4OWI2MjAxY2NmNzkyYWRhYzExOWRkNDNkYTNmN2MiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ3Y2Y3MDMyZjk1MjBjNjE2ZjVkYzc0MGQ3ZWM2ZmUwNzdiYjRmNmZkMGI0NmQ3MDg0MTUxNTkxY2FiNzRlODgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU2MDUzMmM4NmI3ZDc0OTMwNmRjYTFiOTFmZDExNTUxYWQ0NTQ2YTAxZDM0MWQ4MDkwZjdkNjE2MGUwMjU5MzEifQ"
+        },
+        {
+          "resource": "repo://server/startup.mjs#L17-L21",
+          "version": "repo-lines-v1:sha256:cf2e22760a310eae9bd01e7ccc6b166fee45c786a328dd51f872e11a947f9c7c:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzIyYTQzMDAwZDRjNzk1ZTQ0NjFjN2U5ZjExMWNkY2FhOTFhZGMxMTAwYzI1YWQ0ZWJjYTk5YmVmY2JhNGFjNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDEyY2EzNDVjY2Y3NWJmOWMwODA2YmNlNjk1YmU4ZGU4MDhiNzk5ODQyNTFhN2E1NGQyMDJjZjYxMDFkZDQ1MSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjk2YTA5MzE1YzVhMDU1NGQwMjU4ZjE1NzljOWE3MDJhZTZlNWVmNDUxZTUxNGRiY2NiMWRkZTFkNGUxNzE5MiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        },
+        {
+          "resource": "repo://tests/server-startup.test.mjs#L23-L41",
+          "version": "repo-lines-v1:sha256:5969f8dae7b496f634c828889765cf109625ff6ca725bb5c9ffcf0cf2ea6add9:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVlMTQ0NGI3MzczMjc0NjUzODU3MjQ3MmE0ZTBiYzYwZmMwODI5MTExMTA1YjgzY2FhNWIxM2E2MzJiZmUyNDQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI3ZTAyNWUyMzJmY2M3Njg5Y2RkNzk4ZThiN2IzNmQxMWJkN2YzZDcxOGM2MmNlMGZhYmEyOTE3MDQ0M2Y5YTgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg0YzhhNGQzNWFjODYwMGE2ODE3NmU4YTA0OWI0ZTFlYWQ0NWE2YjFhODdmNDkxYjU4YWM2Y2UzZThhMjI1NWEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImY2ZjViNDBiMTU4NDU3ZDE3ODY0ZjIxNzkwNzg2ZGQ1YTJlY2RiNjRiNjZhNjUxZjc4OGQ0ZTI1Y2QzMzAzZDIifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.4.3",
+    "at": "2026-09-01T13:01:45.081Z"
+  }
+}
