@@ -121,6 +121,11 @@ function Landing({ onProcess }: { onProcess: (url: string, frameIntervalSeconds:
 
   async function submit(event: FormEvent) {
     event.preventDefault();
+    // The hosted site is a demo surface; real processing runs locally.
+    if (window.location.hostname.endsWith(".chatgpt.site")) {
+      window.location.assign("/preview");
+      return;
+    }
     setError("");
     if (!/^https:\/\/(www\.)?(youtube\.com|youtu\.be)\//i.test(url)) {
       setError("Paste a valid YouTube URL to continue.");

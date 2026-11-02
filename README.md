@@ -8,7 +8,7 @@
 
 Score Shield is a Node.js and React reference implementation for spoiler-free sports playback. It downloads an authorized YouTube video, samples timestamped frames, uses AI to read the broadcast scoreboard, reconciles those observations into a reliable score timeline, and exports a WebVTT metadata track. The player uses the metadata to show only the score at the viewer's current playhead.
 
-The hosted interface and interactive demo are available at [score-shield-sports.shazron.chatgpt.site](https://score-shield-sports.shazron.chatgpt.site). Real video processing runs locally because it requires FFmpeg, `yt-dlp`, filesystem access, and an OpenAI API key.
+The hosted interface and interactive demo are available at [score-shield-sports.shazron.chatgpt.site](https://score-shield-sports.shazron.chatgpt.site). On the hosted site, **Process video** opens the interactive demo, just like the demo link further down the page. Real video processing runs locally because it requires FFmpeg, `yt-dlp`, filesystem access, and an OpenAI API key.
 
 ## Website preview
 
