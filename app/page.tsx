@@ -256,6 +256,7 @@ function YouTubePlayer({ videoId, onTime, onEnded }: { videoId: string; onTime: 
 
   return <div className="video-frame">
     <iframe ref={frame} title="Spoiler-free match video" src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1&origin=${typeof window !== "undefined" ? window.location.origin : ""}&rel=0&modestbranding=1`} allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen />
+    <div className="video-title-cover" aria-hidden="true" />
     {!uncovered && <button className="privacy-cover" onClick={() => setUncovered(true)}><ShieldMark /><strong>Video details are covered</strong><span>Start when you’re ready</span><i>▶</i></button>}
   </div>;
 }
@@ -301,7 +302,7 @@ function PlayerScreen({ cues, videoUrl, vttUrl, onReset }: { cues: ScoreCue[]; v
         <span>This reference implementation proves the score-timeline idea while leaving a few platform-level problems for future work.</span>
       </div>
       <ol className="challenge-grid">
-        <li><strong>01</strong><h3>YouTube can still reveal its title</h3><p>The cover protects the initial player area, but YouTube’s own player chrome may show the source title after playback begins—and that title may contain the final score.</p></li>
+        <li><strong>01</strong><h3>YouTube can still reveal its title</h3><p>A permanent strip covers the embedded player’s title area and part of the video. YouTube’s fullscreen mode, picture-in-picture, or layout changes can still reveal source details.</p></li>
         <li><strong>02</strong><h3>First-party playback is the workaround</h3><p>Playing the authorized downloaded MP4 in our own video player would remove YouTube’s title overlay. That playback path is intentionally left for a later exercise.</p></li>
         <li><strong>03</strong><h3>Portable metadata needs another step</h3><p>The prototype uses a WebVTT sidecar that the UI reads directly with JavaScript. Embedding it into the video would make the timeline portable, but browsers do not currently expose embedded metadata tracks consistently.</p></li>
       </ol>

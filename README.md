@@ -264,7 +264,7 @@ Before running the workflow, add `OPENAI_API_KEY` as a GitHub Actions repository
 
 ## Challenges
 
-1. **The embedded YouTube title can still reveal the result.** Score Shield controls its surrounding React interface and dynamic title, but YouTube owns the contents of its iframe. YouTube may display the video's original title inside the player during loading, pausing, hovering, or playback, and that title may contain the final score.
+1. **The embedded YouTube title can still reveal the result.** Score Shield places a persistent opaque cover over the top of the embedded player to conceal the title area, including after playback begins. This also obscures video content in that area. YouTube owns the iframe layout, so the cover cannot guarantee protection if that layout changes, in YouTube's own fullscreen mode, or in picture-in-picture.
 2. **Playing the downloaded MP4 ourselves would avoid that provider overlay.** A native HTML video player could use the cached, authorized source copy and give Score Shield full control over every visible title and control surface. Implementing secure media serving, byte-range seeking, and the corresponding playback UI is left as a later exercise.
 3. **Embedding the WebVTT as a metadata track would make the result more portable.** The reference implementation currently emits `score.vtt` as a sidecar file that the interface can download and consume alongside the video. Muxing it into the media container would allow the score timeline to travel with the video itself. Browsers do not currently provide dependable native access to this kind of embedded MP4 metadata track, so the Score Shield UI would also need to extract or demux the track and read its cues directly in JavaScript. Both the embedding step and that JavaScript reader are left as a later exercise.
 
@@ -273,7 +273,7 @@ Before running the workflow, add `OPENAI_API_KEY` as a GitHub Actions repository
 - The PoC targets scoreboard-based sports broadcasts and is not yet sport-specific.
 - The default sampling interval is 10 seconds, with a 5-second override during the final two minutes; brief scoreboard states can still fall between sampled frames.
 - The first implementation analyzes sampled frames sequentially and does not yet cache unchanged scoreboard crops.
-- A YouTube iframe may display provider-owned title or thumbnail UI that the surrounding page cannot fully control. The player covers the iframe until the viewer chooses to begin.
+- A YouTube iframe may display provider-owned title or thumbnail UI that the surrounding page cannot fully control. The player covers the iframe until the viewer chooses to begin, then keeps an opaque strip over the title area. Fullscreen, picture-in-picture, accessibility tools, and provider layout changes can still expose source details.
 - Local job state is not durable across processor restarts.
 - Cached source videos do not currently have an automatic size limit or expiration policy.
 - The hosted site demonstrates the interface; it does not host the FFmpeg processing worker.
