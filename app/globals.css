@@ -130,7 +130,12 @@ button { cursor: pointer; }
 .current-score { display: grid; justify-items: end; }.current-score small, .current-score span { font: 600 9px var(--font-geist-mono), monospace; color: var(--muted); text-transform: uppercase; }.current-score strong { font-size: 42px; letter-spacing: -.06em; }.current-score i { font-style: normal; color: var(--orange); padding: 0 9px; }
 .video-frame { position: relative; aspect-ratio: 16/9; background: var(--night); border: 10px solid var(--night); box-shadow: 14px 16px 0 rgba(16,27,37,.12); }
 .video-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
-.video-title-cover { position: absolute; inset: 0 0 auto; height: clamp(72px, 8vw, 88px); z-index: 1; background: var(--night); }
+.video-title-cover { position: absolute; inset: 0 0 auto; height: clamp(72px, 8vw, 88px); z-index: 1; background: var(--night); color: white; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 16px; }
+.video-title-cover > span { font-size: 13px; font-weight: 700; }
+.video-title-cover small { display: block; margin-top: 5px; color: #aab4ba; font-size: 11px; font-weight: 400; }
+.video-title-cover button { flex: 0 0 44px; height: 44px; border: 1px solid #aab4ba; border-radius: 50%; background: transparent; color: white; font-size: 26px; line-height: 1; }
+.video-title-cover button:hover { background: #223646; }
+.video-title-cover button:focus-visible { outline: 3px solid var(--lime); outline-offset: 3px; }
 .video-frame .privacy-cover { z-index: 2; }
 .privacy-cover { position: absolute; inset: 0; border: 0; color: white; background: radial-gradient(circle at 50% 45%, #1e3344, #09131c 68%); display: grid; place-content: center; justify-items: center; gap: 11px; }
 .privacy-cover:before { content: ""; position: absolute; inset: 25px; border: 1px solid rgba(200,255,66,.18); }
