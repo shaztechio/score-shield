@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:3e22962ef806833d6e48b8ca251129dcabcbd10166f0ae8995126efc8a989757",
+  "claims": [
+    {
+      "id": "claim_b45c3c142c774b0db3d246411ae5d7d6",
+      "statement": "Score Shield separates a hosted Cloudflare/Vinext UI and simulated demo from a local Node processor; the processor is required for real media work because it needs native tools, writable artifacts, and an OpenAI API key, and it is not bundled into the hosted deployment.",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L102-L107",
+          "version": "repo-lines-v1:sha256:fe8c03b4d7208f2cb939d17133cf856f85ac177bdab755f204976a2ba9978711:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNWY3NTQxMWM3ZTY2MTgyNWQwMjQ1Njg5Y2ZmNGM4ZWRmNWRhMjBjMjZmNjBmNjhkZjM4NzlmMjExNDY1NzM5MCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTBlNDA5NjEzMDc2OGJjMzFmYzZhODE5OGIyNzMzOTllY2NhMDYwOGZjMTQ0MTAyZjE1NzUwMjllYjlhYjViOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDBkZjkwZWU2MWQzMWRiMDZiOWM0MTM4ZTY1NTlmYmZhNGNhMWRhNzZkNWE5ZTVlOGUwOGQxNWIyM2EzZjFjMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjA2NmMyNWMzMGY3MTUyYzU2NjM5Mjg4MjI5YjFhY2E5ZDg3MTgxYmFiMDYwNmE4NGFkMDA1OTJhM2YwZTI1YyJ9"
+        },
+        {
+          "resource": "repo://AGENTS.md#L19-L29",
+          "version": "repo-lines-v1:sha256:155eb39bb7e5a0711870f5d112d79257d4181aa872bbe6a5f899dc54a9160af6:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ2MWI2NTdmOGRlYjY5NzcxMDg5MmU1YjRhOTNiYzczMDg5MjczMGM0ZWVmMDRhMTk1Yjg5MzI1ZWRiZTNiMDUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBjMGFlM2RjMGI4OWMxMWQ3ZTIyNjgwNjQ2YmFkNTI4MWEwNGVmMThmNjMwNjNiMjE5NmMwM2JhMDFhZDg4YjciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjU2NzA3ZDA1OWIwOGFlMTdiODRjMDNjMzYwZDdmNjk4NGFiZDkwZDlmYTdkNWViMzJhMjcxMzg5YTNlYTU5ZTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNlODcyNDI4NGQ5MTc2NGM1MzFiY2Q1MDMyNjhkMTdlNjQ4MmY0NzIwNzY5OTE2NTk3NDA3YTI3MmU3NGEzMTMifQ"
+        },
+        {
+          "resource": "repo://README.md#L9-L12",
+          "version": "repo-lines-v1:sha256:ae87e6abdf2970671abc7edee2eb559182e07d9b0788978cbc4b4ccd9c21c4eb:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTE2ZDA2YWY3NmUyYTRlZGQ5ZmZiYWFlNjAzOWMyZWI1YzMzZTkwNWVkMmRiZDJjODc3ZTdlNTA3NTgyOTcyOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZmJmNDM1OWE0ZDA1NzliYzc1ZjEzNGVlZDgwZjYzMzViYjA3MTk4NDdlMzg1NDk1YTVlNWY1NzdjNTI4ZjNiZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjhiZWMzNWE0ODViMjlkMzRiY2M5ZDUxYWViYjE1OWYwNDVhZDBjZmRkOWFhOTQwMTZlYmM4OWI0ZGVjZjg0NSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_e16a031cf8b041dc90b69ab2eead6c8a",
+      "statement": "The browser posts a video job to the configured processor URL, consumes progress and final cues through an EventSource, and enters the player only when an SSE snapshot reports the complete stage; the preview demo instead uses fixed cues and a timer without processor calls.",
+      "evidence": [
+        {
+          "resource": "repo://app/page.tsx#L328-L350",
+          "version": "repo-lines-v1:sha256:e0a2693568d6f479e90f7f5857a9e41baa518cbbce83b8a8cf733d9b725249f0:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ0NjE0MjNhMDg1YWE3MjZkZWFhZDExYTBhMGEzMmUzNDFiMTQ2MDA0ODIxYTQ3OTFhNzI3ZTc2YjAxMWU0YTciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFkOWUxMjU0NjQyNTU3NmQzZGVhZThjOWI5ZGJmMTI4ZDVkNmRkYWY1ZDdmZTg1NzkzNDkyN2RlZmZhM2I5ZGQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ4ZTM1MTdhMDBmNDI3ZDU3ZWFiZjM3ZmQ0NTMwNjI0OWM0OGM4MzdkOTg0ZmZjYTU5NTA2ZmViMGM4NDJhMmMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjYyMTI0YTUxNjEzNWI1ODA0M2QwZmIyYjhhNmM5ODY1N2ZiMTc2NGIwMjVjZDM3MmQ1ZGNmYjY1MTk5ZmIyODYifQ"
+        },
+        {
+          "resource": "repo://app/page.tsx#L353-L385",
+          "version": "repo-lines-v1:sha256:a4448d22964a978f74c104a69ce02a3bedef37e673ed45e02fdebca5f9e26297:eyJzZWxlY3RlZExpbmVDb3VudCI6MzMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBhMmMzZjU2Y2YyN2QzMjQyZGRmZDM4MTk5MGU0NDk3YTdmOGNhZDM0MzBkYjJlODcwMGUyODIwNTI4YzkxMDEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjkwMjQ3ZTUyNTI5NTgxNzY4NDJjMzkzYjdiMzQ1NzYwNThmZmM4YWE1MmRjYjA4MWJiY2QwYjc2MjUwZTMxMDAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImJlZWVmZGQ1MTEzZDk5MDU2ZjFlMTlkZTFiN2Q1YmVkZTZlMGEzMDFmOWU4ZjdiZTRlYWQzZjhmOGRhODY2YzgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjAxMzZjYzYxZTQ0NzE5YjQ2Nzg3MWZiYmMyM2Q2NTExODZmYzg3YWY1NDViNjZjZjJiZDhjZDJhNjVlMTU5ZWIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_59b6410acd884eee8f3d94d7570d88ec",
+      "statement": "The processor validates its environment before listening, exits when OPENAI_API_KEY is missing, binds its HTTP server to 127.0.0.1, and keeps job state in a module-local Map.",
+      "evidence": [
+        {
+          "resource": "repo://server/index.mjs#L151-L151",
+          "version": "repo-lines-v1:sha256:e9dc4013877da39ff2b5fc261a15cd639e8a3f18c0889753f6d1e1aeb917ac44:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTlkYzQwMTM4NzdkYTM5ZmYyYjVmYzI2MWExNWNkNjM5ZThhM2YxOGMwODg5NzUzZjZkMWUxYWViOTE3YWM0NCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTlkYzQwMTM4NzdkYTM5ZmYyYjVmYzI2MWExNWNkNjM5ZThhM2YxOGMwODg5NzUzZjZkMWUxYWViOTE3YWM0NCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZWIxZWExNWEwZjdiMWQ3NzQxYzA5MmRlODAyZDM5ZmRhNDQzNGVjZjA1Zjk0MzU4YzZmMzY5Y2E5MTE2ZTIyZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        },
+        {
+          "resource": "repo://server/index.mjs#L25-L41",
+          "version": "repo-lines-v1:sha256:8a94ac7c3e2dbfe912f88e519118d04f8aa4fd50de0f333cc22c770400aff274:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNhNTNiYTM1MDk2Njc2YzUyNDBjYzA4NDQ4M2ZlMDM1NjE3Zjk0ZjA5MGMyYTA5YTI4NjdjMDQwYWEzNjE5ZTgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJhNTZkMzQ2YzVlYTdlNjljOWUwNjZmZDdkMTI2YzVjYmM4OWI2MjAxY2NmNzkyYWRhYzExOWRkNDNkYTNmN2MiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ3Y2Y3MDMyZjk1MjBjNjE2ZjVkYzc0MGQ3ZWM2ZmUwNzdiYjRmNmZkMGI0NmQ3MDg0MTUxNTkxY2FiNzRlODgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU2MDUzMmM4NmI3ZDc0OTMwNmRjYTFiOTFmZDExNTUxYWQ0NTQ2YTAxZDM0MWQ4MDkwZjdkNjE2MGUwMjU5MzEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_af0273990741455883b037d2e6751f79",
+      "statement": "The processor accepts HTTPS youtube.com, www.youtube.com, and youtu.be job URLs, validates a requested frame interval, returns 202 before asynchronous processing, and broadcasts progress and cues to SSE clients.",
+      "evidence": [
+        {
+          "resource": "repo://server/index.mjs#L119-L141",
+          "version": "repo-lines-v1:sha256:e91dbe1a2397bd3fd91938ef99f208fea83c7f972feec7c2f9c8872e523aca0b:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg0NjdmMmVkMjZkYTEwZDFmZWY0OTI2ZGIzNmQ2ZTNkNjc4Y2NhYTBjZmUzMDcyYzVlOTBjNTA3N2ZhZWNhNjMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYzODFmYjRlYTk0NjcyNDhkNGRlNjlhYTNiMTBiN2Q3NGZlZjJkYWY5NTAzOWEzNjQ5MDk2Y2M5YmQyZTEzOWYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZhNDFkNzNjNDUyMmJlYTM5ZmY4MTVlMjRiY2YxMzExODUzMWQ2NzFlYjNjZjUzMTIxODg1ZTExYTFjNDcyNGQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjE2Zjk5ZjE1ODNjOWQ3NDVmOTJlZDAxOGRhNjQ1NmFhYTI3YzBkOTkyODVkNzkwNGYxODU3Y2Q3MDNlY2ZkZTUifQ"
+        },
+        {
+          "resource": "repo://server/index.mjs#L73-L103",
+          "version": "repo-lines-v1:sha256:ca1c989a05e1698528a8954c441dbc58f443003eec69c1e11bf49e71fcfc29c3:eyJzZWxlY3RlZExpbmVDb3VudCI6MzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE3NDAwOGRmZGI2ZmU5MjBmN2E3ZGVjMWMzNTVkMWMwN2EwZWZmMzA4NjZmZDk3YmQ1MjJiYmExNmJkNDE2NGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI0YjBlOTBhOTg4MzJjZTJjOGI3Zjk3NmQ3Zjg1MDIxNmY2MjgzZDBmYWRlOTYxMDA1ZWYyMDFmZDVjY2YxNDIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImFmZTI2MTNiNjJkOTljZmJiMDZjN2Q5NDE3NjA1ZmRiNmM4OWM4ZTkyODFiYTNkY2Q5NDRjNWU3ZDUzOTNlOTciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNlYWFjOTlmNWZkYmRmZTEzNjBmZjcxMjE3N2U0YjBkZDMyNzk0NzljODIxNTIzNThkYmRhYTg1MjQzMTRjMTQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_c0c81d714c9549d98ee482645f1fcb9c",
+      "statement": "The player selects the latest cue starting at or before current playback time, marks final only after an ended signal, and clears final when a later time update moves before the terminal cue.",
+      "evidence": [
+        {
+          "resource": "repo://app/page.tsx#L258-L283",
+          "version": "repo-lines-v1:sha256:0af4316d716031d97cf69c95229a57d3381f1fe7e35351197beff093205d53c2:eyJzZWxlY3RlZExpbmVDb3VudCI6MjYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgyMjkwZmZkN2RkYTE0OTU3OGRlNTExZGUzZWIzMDFiMWRkNzg4NTg0OTJlZDcxNTA0YWE1ZjBkYzM1NTBkM2MiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI5Zjc3Yjc2YTJjYjU0MWQ3YWNkMmEyMGY2MWY0Y2U2Yzc1N2VjOWE1NjU2MTM2OTE2MDlhMGE2Mzg3YmRkZWEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ0ODRhNGQ4OTdlYWUxNmFmY2JjOWRkMzBkMjNjNTNhNjA3N2ZmMzQ3ODI3ZDJiYjgyOGNiYTdlMWEwMTkxNjgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ0ZDYwNjRkNGI3NDhjNjE1OGVjMjJiYTE3MWFmNjRmYTdmNDZmMThjYTY1NDZhY2QwMWI1YzI1MDY2OGE0NjUifQ"
+        },
+        {
+          "resource": "repo://app/page.tsx#L81-L95",
+          "version": "repo-lines-v1:sha256:ee636b023ac41713213afb1baafb84b158de8038d54ac84fd88601be99ee7c04:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNlNjM5MTYyNWExYzE4ZTRkMGMyY2ZhNTEzMTEzMWE2ZTEyNmI1ZDgxZjcyYWU0N2VkNDM3NDg5MDYwYTNiNTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijk3NzQ1ZGE4ZmE5OWNmN2NmYjRmMzBjODI4MWM3MWYyZGQ4Yzc1Y2E4ODhjMmZjN2YyNGI3ZWIxYWJmNmY5ZjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImFlZDk5ZjUzNTk3YjFmOTgzMzVhNWE2MjhlNTc2MjUzZDRhMDQxZjdmNzJjZGY0Zjg4ZjdjM2RlYmQ1NmMyNDIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_ba72f23892e54897943ec2cc0cde26be",
+      "statement": "The player accepts embedded-player messages only from the YouTube origin and its own iframe, while its initial cover is removed only by viewer action.",
+      "evidence": [
+        {
+          "resource": "repo://app/page.tsx#L231-L255",
+          "version": "repo-lines-v1:sha256:92696b41381e6a2afe4b893092a4a80903e264c5f83fa2853e5c85bec427f270:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcxMjZiMTlkYzZkM2EyODc3ZTA3YjMxOGQyYjliZGZhOTg1MjE0MmM5NDU1MjM0NGJhMjljYTBiMDc2ODkzZjgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgzNmI3YWM3MTk2M2MyMmQ2ZTNkZmU4NDUwNTQ0ZTM1OGFhNmQyMTc0MWYyMWJlZmEyNWUwMzJlMTkxNDUyMzAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA5NGZjMGMxNzNkMWVjM2ZjNTAxZDdkZmE5Mjg1NTAxYzUyN2NmYjQ3MTI1ODNkYTNjYzM2MTgwNTY2YjRiZTMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImY0N2MxMTEwZTIxODk2ZGRmOTJhZDU2ZGY4MGM2MGIwZjIxYTQ0OTk4NGY5N2E3OTZjODJlZDdhOTk3MGM5MTkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_5ce4c321ba6b46409112600fb347a1b4",
+      "statement": "The pipeline treats AI scoreboard readings as schema-validated observations and makes deterministic reconciliation authoritative: it filters unreliable readings, normalizes team sides, rejects duplicates and score regressions, confirms changed scores, and fails when no reliable state is accepted.",
+      "evidence": [
+        {
+          "resource": "repo://server/pipeline.mjs#L141-L223",
+          "version": "repo-lines-v1:sha256:47f6ff905590b5d997d13a3fdd27407d19037cdc291d200d7027a20c33d587c8:eyJzZWxlY3RlZExpbmVDb3VudCI6ODMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQyZGExNDQyNzkxMWIzMWE5NWU1MDg5NWYzMTczNmMwZWJkNGIyOWZjYjFhZWE3M2Q1NmYyM2Y0ZWFmYTMzN2QiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjAwZmM2MTI0NTdjNTIzMGEzZjQxOTMzMDJkNGViY2UzNzZmMmRmZGY5OGFmOGE2NmJkMGUwMGZiZTFiODdjZTkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjU2OGNmMDg5YzdhN2ZhMDg4ZjNiZDlkOGM3YWVjOTg5NDliYzg2ZjlhNzI0Y2ViMjgyNjVhN2IwY2Y1ZWYyMjgifQ"
+        },
+        {
+          "resource": "repo://server/pipeline.mjs#L32-L45",
+          "version": "repo-lines-v1:sha256:9044fbba61d3aa22213b2ad101263051d354c9c9787fd1db50ac4a422821877c:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM0YTU3ZjJiZGYxMzAyZGMxOGZjZTZkZGFhOGZiNjk2MGRmYjk1YTlkODk0ZmQ4NzFjZWE3N2M3OGRmZTRkNTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjM3NGQ1ZWFhZmE4OGM5ZWM5MjgzNTMwNjYxYjMxYmMwMTRmMDk4OTgwNGE0NDYyMDdkOWJmZDFhY2VmNDM5Y2IiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjdiOWQxMzQ5NmQxZDJmMDlhZjY5MDVkMzQ2MWExNWU4Y2I3NGEzNDhkMjE2NjJlMGZjNzk5YWUzMzEzOGM1ZWMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_8f3547687f644132ac339f5e3afef039",
+      "statement": "Accepted score cues are complete bounded states, and WebVTT serialization writes each cue's home team, away team, and confidence with its time interval.",
+      "evidence": [
+        {
+          "resource": "repo://server/pipeline.mjs#L181-L192",
+          "version": "repo-lines-v1:sha256:7fd1cb09f51bb45ab4e5b8be339fb9f714ced4ca78e25479cf19eb3317f232bc:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVkNmVmMDQyZGVjMjU4YWFmZDNjYzRlZmU2YWZmZTM4ZTY4NGJkNGI0ODI5ZjEwNzk3OTJlNzU4Nzc1MDU0NTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZjYTY0NWZhYjZjYzVjOTkyOWU0MmI2MjhjYmZkMDJmMzJiM2RkM2QyYmUwYmY1ZDRjMjBkMjBhZjJlNzM0NWQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhkYzQzNTZlZDk4NTI1MGY4ZWVhNTc1NTMzYTkzOGE2ODYxZDA5OGFlNDczMjk4NjVjMzhmZTJhNGMzMWNlMWIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQ5MjBmOWY1NjIzNzExMTNlMzFmZGE1YzUzNGQ5OGIwMzZiMDhmOTA0YThhYzVlMzI3YWJjMDliOWMwMTAwNGIifQ"
+        },
+        {
+          "resource": "repo://server/pipeline.mjs#L225-L231",
+          "version": "repo-lines-v1:sha256:5854c14bda3e16adf0584a11a7f37177025cecfb315a26bc9b6f5267dede0a73:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODRkYThkZDQ3ZDQxYTgwOTBhZWFhODgxZWY4MGZhNTE4NzY5YzQxN2NjNTAwZWUxMDBlM2FmOWEzYzg2ZGMzZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDEyY2EzNDVjY2Y3NWJmOWMwODA2YmNlNjk1YmU4ZGU4MDhiNzk5ODQyNTFhN2E1NGQyMDJjZjYxMDFkZDQ1MSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiM2IyMzUyNTQ0OTE0YmEyMzA2YmFhM2NhYWIzZDBhNjdiMjA0NTFjY2ZhYTA0MThkOWI4MjcyOWM1YzljNGI3ZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzMyYTJiN2YzY2NlNzRkZTJjMTg1OWQyZDkzNjY5YWNlYzkwM2I1ZjI4NDI3ODQ0MGE3OGRmMzg5M2E5ZGQzMCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_1f1983f53bf04ff1adeaa5033349a14f",
+      "statement": "For each job, the pipeline uses a normalized YouTube identity to cache a source under artifacts/cache/youtube, shares an in-progress same-source download within the process, then creates per-job frames and exports observations, manifest, and score VTT.",
+      "evidence": [
+        {
+          "resource": "repo://server/pipeline.mjs#L249-L255",
+          "version": "repo-lines-v1:sha256:2110529d8fa51c054fc63053a592ba3e4152827dbdc52019fd6bf6ef9c17d154:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDI0NmM5YjgxNjAzZTJmNzk1NmEzNGFlMjkyYzZkMDU3YmVmMmEzZWIxMzI3MjliNTViYzI5YjI1Yzc3MTBjZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTRiOTkyZTI3NTI3MzRjNGNmZDk1Y2IzODdmN2YyNDg4ZDdlZGJmNzYwOGU4ZDAyYzIwZTE3YWY5NmM1ODM5ZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOTUwMWNkNGZhZTY1YzdmYjdlNmQ1ZDhiMzU3MjM0MjgwNzk5ZWU4OTY3ZjIyZWM2MWViN2RjNGU2YmZmYjlkMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZWI3ZTQ3YjI1ZTAxMzBiZTlhNGE1M2ZhMWNkNjUzZWFkNzg0MTRiYjBkMTFhZWUyNjg1ODBmOTA1ZDU1ZWQ4MSJ9"
+        },
+        {
+          "resource": "repo://server/pipeline.mjs#L280-L310",
+          "version": "repo-lines-v1:sha256:c3cbf2cb4bce83132457b5ff140e51b6cf57cd4a45342245567c96b8dbfc6fce:eyJzZWxlY3RlZExpbmVDb3VudCI6MzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc2ODZlNjg4ZDRiM2ViM2E3YjVkM2FlOTBiOGI3MzEyMDgzZTZjYTVlMzQxY2JlYmQzNzk4MThhYTExOWJlYTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI3ZTU3ODhkNWQ5ZDczZDI0YTgxZGJjMGE1YTc0YmZhODJjOWMzYjNhZjk5ZTUyYWY3OTZlOTBiNDY4YThhM2QiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjUxZTM3MjVkYTAwMmI0NmVkOGI0ZGU4ODAwM2FkOTcxMGRjYWYxOGQ1N2M0NzAxZGMzYmVmZjBiMmM1Y2IxM2YiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjM5M2JlNzlkMDcxYWI0YTQ0ZGEzYTdkZjI3NTM5YjJjMzFiMGZjNjM2OWJkMWJmZjg2YzlmMjFjNmIwMzM0NjEifQ"
+        },
+        {
+          "resource": "repo://server/pipeline.mjs#L364-L388",
+          "version": "repo-lines-v1:sha256:1f3bd80e1d5fb4ce5e858983c756c93f76245492e7a093c8996ec5de2ae4e61f:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdlZjMyZDRmZTNmNmQzZTIxZTlmZjlhMzAyOTYyMjVhOTcwYmQ2ZDJhMTg4YWMxNWQyNjg4ZjMzNmY5M2U2OWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNlOGNlYTc2ODdhNjYyNmU4ZGJkOGY4ZjllMjBiZjEwYzAzODRiYzIzY2NiYzk3OWRiNDdjNjdhZWQ0YTU2YTMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjljYWU2MWYyNTI5Yzg4NjUxYmMyMjdmNmFiNTZkYmNkZWQ0MjQ5YzJjZDUxNTcxMDg2ZTQ1ZjNhOWRlZTk1NzMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEifQ"
+        },
+        {
+          "resource": "repo://server/pipeline.mjs#L51-L81",
+          "version": "repo-lines-v1:sha256:815af391ef1c62a39c891d465d37b8371723cb904551e60e61b59df572ad61da:eyJzZWxlY3RlZExpbmVDb3VudCI6MzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVkYmE2NmUzNTdiZDgyODVlYjhkZDk5YWZlYThlZmU3YTRiYTY4M2ZiNjNlMDE2ZDMxNGM0N2ZhMjM2YWY1MDQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQzZDg4NjljYmEyMjJlMDAwM2IwZjI1YmExODMxM2I1Nzc3YTU1MDkxZDdmZjE4NjA5OTZkODg3NzY1OTI0ODgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRiM2VlNjM4ZDczYTlmMTM1YjJmYzZhODk3ZDYxODg4YmFmMzRiNDVjMTFmNDcwNmYzMTQ4YjkxOGYwMmE0OGEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjkzNGVlZjcyMzZiM2M4OWMyMTg2YWU1NDY0NjE0MmJkYmQxOTY4MjljNjc4ZGY4MTQ2MjIxYWJjMTg4YjQ1ZGQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_70ef8e1cb2c44e81952bd1add32180d4",
+      "statement": "The repository requires Node.js 22.13 or newer and provides distinct setup, read-only setup check, dry-run-capable setup script, local processor, development, unit-test, lint, build, and full-test commands.",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L48-L67",
+          "version": "repo-lines-v1:sha256:6c763ba8dd31a8806c2870d0ef3256afe41ea4122a37a459bb0aa653c6ce9d57:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI1MjJhNzkxOTM1ZTA1MDkzODlhY2JlYWJhYmI3MTVlODA4MjlhYzRlYjk0MjJjMGQ5YzcyNmQ4OWRkZTkyZGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE1ODQxMDE1NWZmYzQ4YjJhZjgyMjg2MWRhMzZhMjM0ZTUzNjExZTcwMWFhMDNlNDJhMDNjOWE3MjlmNTU4ZDYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImFjZmQ5N2IzY2E0NjhiODI5ZDRmYzk5YTE0NDFmM2VkZjkwN2I4ZGEzZjJhMTNkMDg2ZDQ1ODU1YmQzZDc0NmIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjYwODQ5NWYzMzBlOGRmMjY5YTZkZWNlYjMyZDhhYTk2OTA1MmMwN2IxZWI5MGExYzFjNDA2NTA0NDAxNWFmNjcifQ"
+        },
+        {
+          "resource": "repo://package.json#L6-L23",
+          "version": "repo-lines-v1:sha256:66806893348b25657444aae35c3c86a834e676ba7c7298643288c1bea61e9d05:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVmNjAxNTU0MTIyZWZlODU1ZDU2ZTEwY2M5YmFmMjAzMWNhM2Y0YWIxMWNkYmEyMmYxZWJjNWQzOWE3NTU4MjQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRkZmMzMGUwMmNjNzMwYWIyODNkMmViYjE1MDI3ZGU2ZDIxOGY0MzkxYjJiNDlkMmRkZjZkMDJlNGI1MmFjMTAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImZhNDBiNjQ3YzhmZDM5ZjA4NTMxY2I2N2JlNGY0OGY5OGZmMGI4MGFlOWVkYzU4MjZhMjk0ZDI5MjVlOWEzNzIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjExNzQ2NmJjMWYwNDA3N2E2YWUyNzQzMDM5OTY1MzhlNTVhMjY2ZWE4OTIyMTk0NDFmMmNmMDA2MWU2ZTkxNjAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_2e061a55590442eea17adaa52b0c7168",
+      "statement": "Setup is installation-capable and may install media tools and create .env only when absent, whereas setup:check is the non-mutating diagnostic path; .env.example defines the non-secret local configuration variables.",
+      "evidence": [
+        {
+          "resource": "repo://.env.example#L1-L9",
+          "version": "repo-lines-v1:sha256:2d0c797a99c668527e44c18e8363f4d042ab5bc14ac26b5deb7600924d8906c0:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTZmYTNmYmEzODQ1YmRhMWI2NGIwM2ViMzY1Yzk3ZDJiODdiNDAyMzAzZTAxYWE5MTJmOTNhNzFlMjQ3NTEyNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMWI2ZjgwMjViMjdmNTVjODE4MTQxYjM3MGI2ZTk1ZDg1OWE3OTdjNDgyMzhlOGE3ZTQzNzJlNzJhYzIyYzA2MCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        },
+        {
+          "resource": "repo://AGENTS.md#L67-L67",
+          "version": "repo-lines-v1:sha256:a58410155ffc48b2af822861da36a234e53611e701aa03e42a03c9a729f558d6:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTU4NDEwMTU1ZmZjNDhiMmFmODIyODYxZGEzNmEyMzRlNTM2MTFlNzAxYWEwM2U0MmEwM2M5YTcyOWY1NThkNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTU4NDEwMTU1ZmZjNDhiMmFmODIyODYxZGEzNmEyMzRlNTM2MTFlNzAxYWEwM2U0MmEwM2M5YTcyOWY1NThkNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZmNiY2UzODNlMTg0ZmUxODNhMjM3NDA2ZjA0MDIzZjA5MGEzZDRhNjk1NGY4MmEzNGE2ODQ2Y2ViOGI4NTczMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjA4NDk1ZjMzMGU4ZGYyNjlhNmRlY2ViMzJkOGFhOTY5MDUyYzA3YjFlYjkwYTFjMWM0MDY1MDQ0MDE1YWY2NyJ9"
+        },
+        {
+          "resource": "repo://README.md#L65-L96",
+          "version": "repo-lines-v1:sha256:e5fad6d429a160a54a9a6c9a0f46513eea17ef2fbfd3aa50345bb3c22644350c:eyJzZWxlY3RlZExpbmVDb3VudCI6MzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU1MjZiNDhkNmY2NWFlMjJhNTAxYTI0NDVkMTg5ZDFiNWRhZTkyZTcyMjA5YzU1MWJhOTZhZmUzNWFlMGExZmEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3YzA2YzU2MWQ1YzMyNzM0MzY4NTI2OGE0NmIzMzkxZjM5OThlZWU4OTBkMmJlNTFmMGQyMWNjNGE1M2FlNmQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjNmMjEzNDUyNTc5ZGViZjU4YzQxYTk4NTljMGNhZjQ1NDVkMjlhMGEwZTU2N2M1NjE1YjJlZTk0NjRhNDY2NTIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNjMGZhNzljZmVhMDcyNGRmZjQ1NjY0NjgyYjEyNTA1NTE3MWViNmUxYzlkYzJlODU1ZjE3NjRiYmQwNWQ3NzEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_ae46347470d6454d8850c60925d6e522",
+      "statement": "The full npm test command runs the unit suites, builds the hosted application, and runs the rendered HTML test, while lint is a separate command; source changes require lint and UI or shared-contract changes require the build/render path.",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L91-L100",
+          "version": "repo-lines-v1:sha256:4fdc06027a7a57ef65714dc3edddf98d61e3318fa6033fc43a5f8a874e364e38:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJiNjY0YzY0NTRiYmZiMmIwNmZiZjZmNWJmZjcxNDA3Y2M1MzJiNWU0Yjg2NmVjMjlhNzIzMDRmMGQxMGQ1MmYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY4NjRjMDkyMWYxZThiZTZkNDM5NTU1NWE1MmEwNjhlNGM1YjA1ZWQ3Zjg1ZjRiYjIxNzc5M2FiM2VhMTY5NjYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc5MTU4ZGVlMjdhYTcwODk2YzExZmI4ZTc2YjI5N2RlMGY3ZGRiNTlhZjMxYmNhYzJiMTkzYjIxZDFhOGY1NjciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQ2YmU2NzFkMzEyMDljY2M2ZGVkNWU1ZmMyOWU3ZmZlMGFhOWI3NTU0NDUzMzBkNTFhNDJkODJkMDFmOTkyMTgifQ"
+        },
+        {
+          "resource": "repo://package.json#L18-L20",
+          "version": "repo-lines-v1:sha256:63d6c50776bfa022c30b6d1f241d196dae3cea7682f128329c2780a72240a33f:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNGFkZmE1MWU4ZDUwOTE3NGZiODFlMzg5Njg4ZGEzYzYzZWViMTkxMmQwZTJhNjkzOWUwZDk1MDcwOWMzMjIzOCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjI1MDEwYWYzZDkzNjFiOTliZDI2MTc5Y2ZkMjQwM2JmYWJkMTNjNzQ2ZTRhODZkZWFiNTAwZjNiNWNlZjAyMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjQ2ZjRhOTMzYWQxNmZkNzFlOTFiODkyYTYzOWY2ZmE2OWIxZmM0NzY0N2YxMGM0ZTk0NTdjZGY4ZTY3ZWJlNSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDE0MzgwOWIxZDNiNGU5NzIxMzlhZTFmNjBhZTVjYWE0NDczNzZmMDA0NDc5ZGMxZGI1MDEyN2U1NjEzZDZkMSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_0f243387a62d4b99bc2be3a3b44cf802",
+      "statement": "The processor and UI must not expose future score/result information or source titles, must derive score from current media time, must keep final status completion-gated, and must keep deterministic reconciliation authoritative over model output.",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L5-L17",
+          "version": "repo-lines-v1:sha256:64bb2aede7dd178dfd3b1f113a89f32771f1066802bf030cd50d87aa12839c2b:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBlMWMzZmE1NzhlZGZlNDc1ZjM0OTgxODUxOGM1YzkyMzUwMzg5OTI3MjNiYjIxNDBhYjk0MGU4YzdmY2M4MzUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY3YTgxMjJhNjI2ZTExYzlhZjA1NDBlYjkzNzBhNjg4MTc0NWNiZTFlMGI0MmJlMzAyMGU5MTFkYjUyYzVlYTIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY0NWJlYTM5NjI4ZTk0YzU5YTY3MDFhODc1MDE2ZDg3MzRlNzE4ZGVhZmExNzRmOWE3Y2Q2OWZjMTBmMGM5NjciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjU3MjFjNjQ4ZmFkZWU5ZjNiNjMwNDc3MzMxYmQ3NWFmMTJmMWE2OGI1NGNiYmNkZTdmM2U0N2NhNWM0ZWI3NzcifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.4.3",
+    "at": "2026-09-01T13:01:45.081Z"
+  }
+}
